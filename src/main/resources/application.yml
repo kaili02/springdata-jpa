@@ -10,7 +10,6 @@ spring:
   jackson:
 #    time-zone: GMT+8
     time-zone: Asia/Singapore
-  port: 8080
 
   jpa:
     properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
@@ -19,6 +18,21 @@ spring:
     hibernate:
       ddl-auto: none
 
+server:
+  port: 8080
 #jasypt:
 #  encryptor:
 #    password: 123456
+
+
+
+# the job-scheduler is enabled by default
+# the background-job-server and dashboard are disabled by default
+org:
+  jobrunr:
+    dashboard:
+      enabled: true
+    background-job-server:
+      enabled: true
+#    database:
+#      skip-create: true

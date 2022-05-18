@@ -1,12 +1,13 @@
 package com.pgh.spring_data_jpa0414.repository;
 
-import com.pgh.spring_data_jpa0414.entity.SStudent;
 import com.pgh.spring_data_jpa0414.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.Lock;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import javax.persistence.LockModeType;
+import java.util.Optional;
 
 /**
  * TODO
@@ -17,4 +18,15 @@ import java.util.List;
  */
 public interface UserDao extends JpaRepository<User,Long>, JpaSpecificationExecutor<User> {
 
+    @Transactional
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    User findByName(String name);
+
+    @Transactional
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    User findByNameAndDesc(String name, String desc);
+
+    @Transactional
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    Optional<User> findById(Long id);
 }

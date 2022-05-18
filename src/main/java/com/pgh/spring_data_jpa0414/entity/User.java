@@ -1,8 +1,12 @@
 package com.pgh.spring_data_jpa0414.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -16,6 +20,7 @@ import java.util.Date;
 @Entity
 @Table(name = "tb_user")
 @Cacheable(false)
+@ToString
 public class User {
 
     @Id
@@ -29,6 +34,15 @@ public class User {
     @Column(name="p_desc")
     private String desc;
 
-    @Column(name="update_date", updatable = false, insertable = false)
+    @Column(name="update_date", updatable = false)
     private Date updateDt;
+
+    private Instant createDt;
+
+    private LocalDateTime createDt2;
+
+    @Version
+    private Long version;
+
+    private transient BigDecimal price;
 }

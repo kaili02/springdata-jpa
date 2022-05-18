@@ -30,8 +30,16 @@ public class UserController {
         return Result.ok(user);
     }
 
+
+
+
+
+
+
     @RequestMapping(value = "/user",method = RequestMethod.PUT)
     public Result save(@RequestBody User user){
+//        user.setCreateDt(Instant.now());
+//        user.setCreateDt2(LocalDateTime.now());
         User save = iUserService.save(user);
         return Result.ok(save);
     }

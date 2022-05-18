@@ -10,7 +10,19 @@ public class SpringDataJpa0414Application {
 
     public static void main(String[] args) {
         TimeZone.setDefault(TimeZone.getTimeZone("Asia/Singapore"));
+//        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
         SpringApplication.run(SpringDataJpa0414Application.class, args);
     }
+
+//    @Bean
+//    public JobScheduler initJobRunr(DataSource dataSource, JobActivator jobActivator) {
+//        return JobRunr.configure()
+//                .useJobActivator(jobActivator)
+//                .useStorageProvider(SqlStorageProviderFactory
+//                        .using(dataSource))
+//                .useBackgroundJobServer()
+//                .useDashboard()
+//                .initialize();
+//    }
 
 }
